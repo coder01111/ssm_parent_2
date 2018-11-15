@@ -1,12 +1,18 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="ssm_parent_2_web:war exploded">
-    <output-path>$PROJECT_DIR$/ssm_parent_2_web/target/ssm_parent_2_web</output-path>
+    <output-path>$PROJECT_DIR$/ssm_parent_2_web/target/ssm_parent_2_web-1.0-SNAPSHOT</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
           <element id="module-output" name="ssm_parent_2_web" />
         </element>
         <element id="directory" name="lib">
+          <element id="archive" name="ssm_parent_2_service-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="ssm_parent_2_service" />
+          </element>
+          <element id="archive" name="ssm_parent_2_dao-1.0-SNAPSHOT.jar">
+            <element id="module-output" name="ssm_parent_2_dao" />
+          </element>
           <element id="library" level="project" name="Maven: org.aspectj:aspectjweaver:1.6.8" />
           <element id="library" level="project" name="Maven: org.springframework:spring-aop:5.0.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-context:5.0.2.RELEASE" />
@@ -40,7 +46,7 @@
         </element>
       </element>
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/ssm_parent_2_web/target/ssm_parent_2_web/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/ssm_parent_2_web/target/ssm_parent_2_web-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
       </element>
       <element id="javaee-facet-resources" facet="ssm_parent_2_web/web/Web" />
     </root>
