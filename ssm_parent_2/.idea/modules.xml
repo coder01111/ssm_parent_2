@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ssm_parent_2.iml" filepath="$PROJECT_DIR$/ssm_parent_2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_parent_2_dao/ssm_parent_2_dao.iml" filepath="$PROJECT_DIR$/ssm_parent_2_dao/ssm_parent_2_dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_parent_2_service/ssm_parent_2_service.iml" filepath="$PROJECT_DIR$/ssm_parent_2_service/ssm_parent_2_service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm_parent_2_web/ssm_parent_2_web.iml" filepath="$PROJECT_DIR$/ssm_parent_2_web/ssm_parent_2_web.iml" />
+    </modules>
+  </component>
+</project>
