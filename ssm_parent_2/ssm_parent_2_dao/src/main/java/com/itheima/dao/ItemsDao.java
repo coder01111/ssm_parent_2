@@ -1,9 +1,11 @@
 package com.itheima.dao;
 
 import com.itheima.domain.Items;
-//ÁõÔªÇì£¬ÎÒÊÇÔ¬ÇÚ¿µ
+
+//ï¿½ï¿½Ôªï¿½ì£¬ï¿½ï¿½ï¿½ï¿½Ô¬ï¿½Ú¿ï¿½
 public interface ItemsDao {
     public Items findById(Integer id);
+
     //
     void save();
 }
