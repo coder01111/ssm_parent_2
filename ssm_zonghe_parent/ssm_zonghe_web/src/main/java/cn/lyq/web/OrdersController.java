@@ -4,6 +4,8 @@ import cn.lyq.domain.Orders;
 import cn.lyq.service.OrdersService;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +29,9 @@ public class OrdersController {
 //    }
 
     @RequestMapping("/findAll.do")
+//    @Secured("Role_Admin")
+    //只有有这个角色才能访问这个方法
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public ModelAndView findAll(@RequestParam(name = "page", defaultValue = "1", required = true) int page, @RequestParam(name = "size", required = true, defaultValue = "4") int size) throws Exception {
         ModelAndView mv = new ModelAndView();
         List<Orders> ordersList = ordersService.findAll(page, size);
@@ -39,6 +44,7 @@ public class OrdersController {
 
     @RequestMapping("/findAllPage.do")
     @ResponseBody
+    //只有tom才能访问这个方法
     public PageInfo findAll1(@RequestParam(name = "page", defaultValue = "1", required = true) int page, @RequestParam(name = "size", required = true, defaultValue = "4") int size) throws Exception {
         ModelAndView mv = new ModelAndView();
         List<Orders> ordersList = ordersService.findAll(page, size);

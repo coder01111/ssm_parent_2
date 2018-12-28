@@ -49,10 +49,10 @@ public class RoleController {
     public ModelAndView findRoleByIdAndAllPermission(@RequestParam(name = "id", required = true) String roleId) throws Exception {
         ModelAndView mv = new ModelAndView();
         //根据roleId查询role
-        Role role = roleService.findById(roleId);
+        //Role role = roleService.findById(roleId);
         //根据roleId查询可以添加的权限
         List<Permission> otherPermissions = roleService.findOtherPermissions(roleId);
-        mv.addObject("role", role);
+        mv.addObject("roleId", roleId);
         mv.addObject("permissionList", otherPermissions);
         mv.setViewName("role-permission-add");
         return mv;

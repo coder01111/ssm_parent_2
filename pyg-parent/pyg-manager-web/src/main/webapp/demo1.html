@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo1</title>
+    <script src="plugins/angularjs/angular.min.js"></script>
+    <script>
+        var app = angular.module("myApp",[]);
+      app.controller("myController",function ($scope) {
+            $scope.add=function () {
+                $scope.z = ($scope.x-0)+($scope.y-0);
+                return z;
+            }
+          $scope.list=[2,35,445,4545];
+            $scope.list1=[
+                {name:"张三",shuxue:80,yuwen:34},
+                {name:"李四",shuxue:70,yuwen:67},
+                {name:"王五",shuxue:89,yuwen:78}
+                ];
+      });
+
+
+
+    </script>
+</head>
+<body ng-app="myApp" ng-controller="myController">
+{{100+200}}
+请输入：<input ng-model="x">
+请输入：<input ng-model="y">
+<!--双向绑定-->
+<!--{{add()}}<br>-->
+<button ng-click="add()">运算</button>
+{{z}}<br>
+<table>
+    <tr ng-repeat="p in list">
+        <td>
+           {{p}}
+        </td>
+    </tr>
+</table>
+<table border="1px">
+    <tr ng-repeat=" p in list1">
+        <td>{{p.name}}</td>
+        <td>{{p.shuxue}}</td>
+        <td>{{p.yuwen}}</td>
+    </tr>
+</table>
+</body>
+</html>

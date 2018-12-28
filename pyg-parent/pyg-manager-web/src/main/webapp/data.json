@@ -1,0 +1,17 @@
+[
+  {
+    "name": "张三",
+    "shuxue": 80,
+    "yuwen": 34
+  },
+  {
+    "name": "李四",
+    "shuxue": 70,
+    "yuwen": 67
+  },
+  {
+    "name": "王五",
+    "shuxue": 89,
+    "yuwen": 78
+  }
+]

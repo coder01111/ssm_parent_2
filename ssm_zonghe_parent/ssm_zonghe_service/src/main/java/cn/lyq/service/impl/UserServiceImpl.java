@@ -33,7 +33,13 @@ public class UserServiceImpl implements UserService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
        /* spring-security框架会自动去获取表单提交的数据并且调用这个方法
       去进行和我们返回的UserDetails的实现类里面的用户名和密码进行比较*/
-        UserInfo userInfo = userDao.findUserByUserName(username);
+        UserInfo userInfo = null;
+        try {
+            //可能查询出来为空的，捕获异常有助于解决Bug
+            userInfo = userDao.findUserByUserName(username);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         List<Role> roles = userInfo.getRoles();
         User user = new User(userInfo.getUsername(),  userInfo.getPassword(), userInfo.getStatus() == 0 ? false : true, true, true, true, getAuthority(roles));
         return user;

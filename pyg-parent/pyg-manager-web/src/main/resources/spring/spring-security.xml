@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security.xsd">
+
+    <security:global-method-security pre-post-annotations="enabled" jsr250-annotations="enabled"
+                                     secured-annotations="enabled"></security:global-method-security>
+
+    <!-- 配置不拦截的资源 -->
+    <security:http pattern="/*.html" security="none"/>
+    <security:http pattern="/js/**" security="none"/>
+    <security:http pattern="/css/**" security="none"/>
+    <security:http pattern="/img/**" security="none"/>
+    <security:http pattern="/plugins/**" security="none"/>
+
+    <!--
+    	配置具体的规则
+    	auto-config="true"	不用自己编写登录的页面，框架提供默认登录页面
+    	use-expressions="false"	是否使用SPEL表达式（没学习过）
+    -->
+    <security:http auto-config="true" use-expressions="false">
+
+        <security:intercept-url pattern="/**" access="ROLE_ADMIN"/>
+
+        <!-- 定义跳转的具体的页面 -->
+        <security:form-login
+                login-page="/login.html"
+                default-target-url="/admin/index.html"
+                authentication-failure-url="/login.html"
+                always-use-default-target="true"
+        />
+        <!--always-use-default-target：指定了是否在身份验证通过后总是跳转到default-target-url属性指定的URL。
+如果你在系统中使用了框架页，需要设置框架页的策略为SAMEORIGIN
+-->
+        <security:headers>
+            <security:frame-options policy="SAMEORIGIN"/>
+        </security:headers>
+
+        <!-- 关闭跨域请求 -->
+        <security:csrf disabled="true"/>
+        <!-- 退出 -->
+        <security:logout invalidate-session="true" logout-url="/logout.do" logout-success-url="/login.html"/>
+
+    </security:http>
+
+    <!--&lt;!&ndash; 切换成数据库中的用户名和密码 &ndash;&gt;-->
+    <!--<security:authentication-manager>-->
+        <!--<security:authentication-provider user-service-ref="UserService">-->
+            <!--&lt;!&ndash; 配置加密的方式&ndash;&gt;-->
+            <!--<security:password-encoder ref="passwordEncoder"/>-->
+        <!--</security:authentication-provider>-->
+    <!--</security:authentication-manager>-->
+
+    <!-- 配置加密类 -->
+    <bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+    <!--不开启spel表达式可以使用这种方式-->
+    <!-- <bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />-->
+     <!--提供了入门的方式，在内存中存入用户名和密码-->
+    <security:authentication-manager>
+    	<security:authentication-provider>
+    		<security:user-service>
+    			<security:user name="admin" password="123456" authorities="ROLE_USER"/>
+                <security:user name="sunwukong" password="dasheng" authorities="ROLE_ADMIN"/>
+    		</security:user-service>
+    	</security:authentication-provider>
+    </security:authentication-manager>
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
