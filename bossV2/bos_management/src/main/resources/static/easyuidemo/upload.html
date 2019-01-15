@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>文件上传</title>
+<script type="text/javascript" src="../js/jquery-1.8.3.js" ></script>
+<script type="text/javascript" 
+			src="../js/ocupload/jquery.ocupload-1.1.2.js" ></script>
+<script>
+	$(function(){
+		
+		$("#ocbtn").click(function(){
+			
+			$("#file").trigger("click");
+			
+		});
+		
+	});
+	
+	
+	function uploadFun(){
+		
+		$("#uploadForm").submit();
+		
+	}
+
+</script>
+</head>
+<body>
+	<input type="button" value="一键上传" id="ocbtn">
+	<hr>
+	<div style="visibility: hidden">
+	<form id="uploadForm" action="abc" target="myIframe" enctype="multipart/form-data" method="post" >
+		用户名: <input type="text" name="uname"><br/>
+		<input type="file" name="myFile" id="file" onchange="uploadFun()"><br/><br/>
+		<input type="submit" value="普通上传">
+	</form>
+	<br/>
+	<iframe   name="myIframe" scrolling="yes" ></iframe>
+	</div>
+</body>
+</html>
